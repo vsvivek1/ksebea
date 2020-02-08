@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://10.0.1.49/SARAS/sarasApps/saras/gst/services/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="GstWebService" targetNamespace="http://10.0.1.49/SARAS/sarasApps/saras/gst/services/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://localhost/saras/gst/services/">
+      <xsd:element name="ServieRequest">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="in" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ServiceResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="out" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+            <xsd:element name="Element1"><xsd:complexType><xsd:sequence><xsd:element minOccurs="1" maxOccurs="1" name="string" type="xsd:string"></xsd:element></xsd:sequence></xsd:complexType></xsd:element>
+            <xsd:element name="Element2"><xsd:complexType><xsd:sequence><xsd:element minOccurs="1" maxOccurs="1" name="string" type="xsd:string"></xsd:element></xsd:sequence></xsd:complexType></xsd:element>
+            <xsd:element name="Element3"><xsd:complexType><xsd:sequence><xsd:element minOccurs="1" maxOccurs="1" name="string" type="xsd:string"></xsd:element></xsd:sequence></xsd:complexType></xsd:element>
+            <xsd:element name="Element4"><xsd:complexType><xsd:sequence><xsd:element minOccurs="1" maxOccurs="1" name="string" type="xsd:string"></xsd:element></xsd:sequence></xsd:complexType></xsd:element>
+            <xsd:element name="Element5"><xsd:complexType><xsd:sequence><xsd:element minOccurs="1" maxOccurs="1" name="string" type="xsd:string"></xsd:element></xsd:sequence></xsd:complexType></xsd:element>
+            <xsd:element name="Element6"><xsd:complexType><xsd:sequence><xsd:element minOccurs="1" maxOccurs="1" name="string" type="xsd:string"></xsd:element></xsd:sequence></xsd:complexType></xsd:element>
+            <xsd:element name="Element7"><xsd:complexType><xsd:sequence><xsd:element minOccurs="1" maxOccurs="1" name="string" type="xsd:string"></xsd:element></xsd:sequence></xsd:complexType></xsd:element>
+        </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="NewOperationRequest">
+        <wsdl:part name="application_id" type="xsd:string"></wsdl:part>
+        <wsdl:part name="employee_code" type="xsd:string"></wsdl:part>
+        <wsdl:part name="office_code" type="xsd:string"></wsdl:part>
+        <wsdl:part name="service_id" type="xsd:string"></wsdl:part>
+        <wsdl:part name="service_params_json" type="xsd:string"></wsdl:part>
+    </wsdl:message>
+  <wsdl:message name="NewOperationResponse">        <wsdl:part name="result_json" type="xsd:string"></wsdl:part>
+    </wsdl:message>
+  <wsdl:portType name="GstWebService"><wsdl:documentation>WSDL File for GST Web Service of KSEBLtd</wsdl:documentation>
+    <wsdl:operation name="getGstService"><wsdl:documentation>This function is intended to get all web services from GST Service Module to integrate with various KSEBL internal applications.
+It takes 5 parameters:
+1. application_id
+2. employee_code
+3. office_code
+4. service_id
+5. service_params_json
+All fields are mandatory.
+
+Return value: result_json
+Contain 3 fields
+1. error_code : 0 mean success; otherwise fail.
+2. message: Message from web service
+3. data: Contains service specific response.
+</wsdl:documentation>
+      <wsdl:input message="tns:NewOperationRequest"/>
+      <wsdl:output message="tns:NewOperationResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="GstWebServiceSOAP" type="tns:GstWebService">
+
+  	<soap:binding style="rpc"
+  		transport="http://schemas.xmlsoap.org/soap/http" />
+  	<wsdl:operation name="getGstService">
+
+  		<soap:operation
+  			soapAction="http://localhost/saras/gst/services/getGstService" />
+  		<wsdl:input>
+
+  			<soap:body use="literal"
+  				namespace="http://localhost/saras/gst/services/" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal"
+  				namespace="http://localhost/saras/gst/services/" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="GstWebService">
+    <wsdl:port binding="tns:GstWebServiceSOAP" name="GstWebServiceSOAP">
+      <soap:address location="http://10.0.1.49/SARAS/sarasApps/saras/gst/service/web_service.php"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

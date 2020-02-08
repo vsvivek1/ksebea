@@ -1,0 +1,86 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 9 Dec, 2015, 4:28:40 PM
+    Author     : bibinspanicker
+*/
+
+.jGrowl {
+    z-index: 9999;
+    position: absolute
+}
+body>.jGrowl {
+    position: fixed
+}
+.jGrowl.top-left {
+    top: 0;
+    left: 0
+}
+.jGrowl.top-right {
+    top: 0;
+    right: 0
+}
+.jGrowl.bottom-left {
+    bottom: 0;
+    left: 0
+}
+.jGrowl.bottom-right {
+    right: 0;
+    bottom: 0
+}
+.jGrowl.center {
+    top: 50%;
+    left: 50%;
+    width: 0;
+    margin-left: -170px
+}
+.center .jGrowl-closer,
+.center .jGrowl-notification {
+    margin-right: auto;
+    margin-left: auto
+}
+.jGrowl .jGrowl-closer,
+.jGrowl .jGrowl-notification {
+    font-size: 15px;
+    display: none;
+    zoom: 1;
+    width: 300px;
+    padding: 10px 15px;
+    white-space: normal;
+    opacity: .95;
+    filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=95)
+}
+.jGrowl .jGrowl-notification:hover {
+    opacity: 1;
+    filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100)
+}
+.jGrowl .jGrowl-notification {
+    min-height: 20px
+}
+.jGrowl .jGrowl-closer,
+.jGrowl .jGrowl-notification {
+    margin: 10px
+}
+.jGrowl .jGrowl-notification .jGrowl-header {
+    font-size: .85em;
+    font-weight: 700
+}
+.jGrowl .jGrowl-notification .jGrowl-close {
+    font-weight: 700;
+    z-index: 99;
+    float: right;
+    cursor: pointer
+}
+.jGrowl .jGrowl-closer {
+    font-weight: 700;
+    cursor: pointer;
+    text-align: center
+}
+@media print {
+    .jGrowl {
+        display: none
+    }
+}
